@@ -52,6 +52,10 @@ def display_task(task_list, position):
 
 #====Main Program====
 #====Login Section====
+
+"""
+Set up user database (Python dictionary) and variable "user" for the currently logged in username
+"""
 user_db = dict()
 user = ""
 
