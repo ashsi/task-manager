@@ -27,7 +27,7 @@ any other key - Return to menu
 #====Functions====
 
 def update_user_db():
-    with open("user.txt", "r") as user_f:
+    with open("data/user.txt", "r") as user_f:
         for credentials in user_f:
             raw_user, raw_pw = credentials.split(", ")
             raw_pw = raw_pw.strip("\n")
@@ -115,7 +115,7 @@ while True:
                     else:
                         break
                 else:
-                    with open("user.txt", "a") as f:
+                    with open("data/user.txt", "a") as f:
                         f.write("\n" + new_user + ", " + new_pw)
                     update_user_db()
                     print("User successfully registered.")
@@ -131,7 +131,7 @@ while True:
             break
         else:
             total_tasks = 0
-            with open("tasks.txt", "r") as tasks_f:
+            with open("data/tasks.txt", "r") as tasks_f:
                 for line in tasks_f:
                     total_tasks += 1
             total_users = len(user_db)
@@ -148,7 +148,7 @@ while True:
         due_date = input("Enter the task's due date in the format YYYY-MM-DD\n: ")
         curr_date = datetime.date.today()
         task_complete = "No"
-        with open("tasks.txt", "a") as tasks_f:
+        with open("data/tasks.txt", "a") as tasks_f:
             tasks_f.write(f"\n{username}, {title}, {desc}, {due_date}, {curr_date}, {task_complete}")
 
     elif menu == 'va':
@@ -156,7 +156,7 @@ while True:
         Show all tasks saved in tasks.txt
         """
         print("Showing all tasks.")
-        with open("tasks.txt", "r") as tasks_f:
+        with open("data/tasks.txt", "r") as tasks_f:
             for num, task in enumerate(tasks_f, 1):
                 task_split = task.split(", ")
                 task_split[0] = task_split[0].strip("\n")
@@ -169,7 +169,7 @@ while True:
         """
         print("Showing your tasks.")
         num_tasks = 0
-        with open("tasks.txt", "r") as tasks_f:
+        with open("data/tasks.txt", "r") as tasks_f:
             for task in tasks_f:
                 task_split = task.split(", ")
                 task_split[0] = task_split[0].strip("\n")
